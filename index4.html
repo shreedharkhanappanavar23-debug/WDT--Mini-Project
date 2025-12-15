@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Art.Design Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font awesome icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        /* Header Styles */
+        .navbar {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .navbar-brand {
+            color: white;
+            text-decoration: none;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .navbar-nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .navbar-nav li {
+            margin-left: 2rem;
+        }
+
+        .navbar-nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .navbar-nav a:hover,
+        .current-page {
+            color: #3498db;
+        }
+
+        .banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .banner .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .banner-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .banner-title span {
+            color: #3498db;
+        }
+
+        /* Sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .title h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        /* Design Section */
+        .design-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .design-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            padding-bottom: 20px;
+        }
+
+        .design-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .design-img img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .design-preview {
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+            color: #555;
+        }
+
+        .design-full {
+            display: none;
+            background: #f8f9fa;
+            margin-top: 1rem;
+            padding: 1rem;
+            border-left: 4px solid #3498db;
+            border-radius: 8px;
+        }
+
+        .design-btn {
+            margin-top: 10px;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .design-btn:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(45deg, #2980b9, #3498db);
+        }
+
+        .design-btn.active {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+        }
+
+        /* Blog Section */
+        .blog-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .blog-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .blog-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .blog-img img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .content-section {
+            padding: 2rem;
+            position: relative;
+        }
+
+        .full-content {
+            display: none;
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-left: 4px solid #3498db;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+
+        .read-more-btn {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .banner-title {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index4.html" class="navbar-brand">Art.Blog</a>
+<div class="design-img">
+                        <img src="images/logo.png" alt="">
+                    </div>
+                <div class="navbar-nav">
+                    <ul>
+                        <li><a href="index4.html">Home</a></li>
+                        <li><a href="about.html">About me</a></li>
+                        <li><a href="recent.html">Recent posts</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="banner">
+            <div class="container">
+ 
+                <h1 class="banner-title">
+                    <span>Art.</span> Simple Blog
+                </h1>
+                <p>everything that you want to know about art & design</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Design Section -->
+    <section class="design" id="design">
+        <div class="container">
+            <div class="title">
+                <h2>Recent Arts & Simple Blog</h2>
+                <p>recent arts & Simple Blogs</p>
+            </div>
+
+            <div class="design-content">
+
+                <!-- ITEM 1 -->
+                <div class="design-item">
+                    <div class="design-img">
+                        <img src="images/img4.png" alt="">
+                    </div>
+                    <div class="design-title">
+                        <a href="#">make an awesome art portfolio for college or university</a>
+                        <div class="design-preview">Creating a strong art portfolio is essential for students applying to universities or creative programs.</div>
+                        <div class="design-full">
+                            A great portfolio highlights your creativity, originality, and technical skills.
+                            It includes drawings, digital works, concept sketches, and mixed media projects that show artistic growth.
+                        </div>
+                        <button class="design-btn">Read More</button>
+                    </div>
+                </div>
+
+                <!-- ITEM 2 -->
+                <div class="design-item">
+                    <div class="design-img">
+                        <img src="images/img2.jpg" alt="">
+                    </div>
+                    <div class="design-title">
+                        <a href="#">Art and design transform ideas into visual experiences.</a>
+                        <div class="design-preview">Art and design help shape how we think, feel, and connect with the world.</div>
+                        <div class="design-full">
+                            Designers use shape, form, color, and contrast to communicate ideas.
+                            Art influences fashion, media, architecture, technology, and everyday life.
+                        </div>
+                        <button class="design-btn">Read More</button>
+                    </div>
+                </div>
+
+                <!-- ITEM 3 -->
+                <div class="design-item">
+                    <div class="design-img">
+                        <img src="images/img3.jpg" alt="">
+                    </div>
+                    <div class="design-title">
+                        <a href="#">Leaves are nature's delicate factories.</a>
+                        <div class="design-preview">Leaves convert sunlight into oxygen and support life on Earth.</div>
+                        <div class="design-full">
+                            Their shapes, patterns, and symmetry inspire natural design, art compositions, and interior styling.
+                        </div>
+                        <button class="design-btn">Read More</button>
+                    </div>
+                </div>
+
+                <!-- ITEM 4 -->
+                <div class="design-item">
+                    <div class="design-img">
+                        <img src="images/art-design-4.jpg" alt="">
+                    </div>
+                    <div class="design-title">
+                        <a href="#">A wall stands as a silent boundary.</a>
+                        <div class="design-preview">Walls protect, divide, and also tell stories.</div>
+                        <div class="design-full">
+                            They serve as canvases for murals, graffiti, cultural expression, and modern interior décor.
+                        </div>
+                        <button class="design-btn">Read More</button>
+                    </div>
+                </div>
+
+                <!-- ITEM 5 -->
+                <div class="design-item">
+                    <div class="design-img">
+                        <img src="images/art-design-5.jpg" alt="">
+                    </div>
+                    <div class="design-title">
+                        <a href="#">Wall photos capture moments in time.</a>
+                        <div class="design-preview">Photographs turn blank walls into memories.</div>
+                        <div class="design-full">
+                            From minimalist frames to gallery walls, photography adds emotion and personality to spaces.
+                        </div>
+                        <button class="design-btn">Read More</button>
+                    </div>
+                </div>
+
+                <!-- ITEM 6 -->
+                <div class="design-item">
+                    <div class="design-img">
+                        <img src="images/art-design-6.jpg" alt="">
+                    </div>
+                    <div class="design-title">
+                        <a href="#">make an awesome art portfolio</a>
+                        <div class="design-preview">A portfolio reflects your artistic identity.</div>
+                        <div class="design-full">
+                            Include concept sketches, project development, and final artworks to show your full creative process.
+                        </div>
+                        <button class="design-btn">Read More</button>
+                    </div>
+                </div>
+
+            </div>
+<!-- Blog Section -->
+    <section class="blog" id="blog">
+        <div class="container">
+            <div class="title">
+                <h2>Latest Blog</h2>
+                <p>recent blogs about art & design</p>
+            </div>
+            <div class="blog-content">
+                <div class="blog-item">
+                    <div class="blog-img">
+                        <img src="images/blog-p-1.jpg" alt="Blog 1">
+                    </div>
+                    <div class="content-section" data-index="0">
+                        <h2>Calm and Creative Home Workspace</h2>
+                        <div class="content-preview">
+                            This image shows a calm, minimalist home workspace with a laptop placed on a cozy white bed.
+A green indoor plant adds a touch of nature and freshness to the setup..
+                        </div>
+                        <div class="full-content">
+                            This image captures a soft, cozy setup featuring a white laptop, an open notebook, and plush pillows arranged on a light bed setting.
+The addition of lush green plants brings freshness and balance, creating an inviting environment perfect for reading, working, or artistic inspiration.
+                        </div>
+                        <button class="read-more-btn" data-target="0">Read More</button>
+                    </div>
+                </div>
+                <div class="blog-item">
+                    <div class="blog-img">
+                        <img src="images/blog-p-2.jpg" alt="Blog 2">
+                    </div>
+                    <div class="content-section" data-index="1">
+                        <h2>Playful and Creative Drawing Space</h2>
+                        <div class="content-preview">
+                            This image shows a playful drawing area with scattered markers, pens, and colorful doodles on paper.
+It creates a creative, child-friendly space for art and imagination.
+                        </div>
+                        <div class="full-content">
+                            The image shows a lively art setup with scattered markers, pencils, and crayons surrounding a sheet filled with colorful doodles.
+It reflects a fun, expressive environment where creativity flows freely, likely capturing a spontaneous drawing moment.
+                        </div>
+                        <button class="read-more-btn" data-target="1">Read More</button>
+                    </div>
+                </div>
+                <div class="blog-item">
+                    <div class="blog-img">
+                        <img src="images/blog-p-3.jpg" alt="Blog 3">
+                    </div>
+                    <div class="content-section" data-index="2">
+                        <h2>Cozy and Creative Kids' Room Decor</h2>
+                        <div class="content-preview">
+                            This image shows a neatly decorated kids' room with toy figures arranged on a white shelf.
+Below the shelf, there's a framed artwork featuring cute illustrations, adding a creative touch to the space.
+                        </div>
+                        <div class="full-content">
+                            The image shows a charming and minimalistic children's space featuring a small white wall shelf neatly arranged with cute wooden and painted figurines, alongside a framed alphabet artwork decorated with soft animal illustrations; together, these elements create a warm, playful, and aesthetically pleasing environment that blends learning with imaginative decor..
+                        </div>
+                        <button class="read-more-btn" data-target="2">Read More</button>
+                    </div>
+                </div>
+                <div class="blog-item">
+                    <div class="blog-img">
+                        <img src="images/blog-p-4.jpg" alt="Blog 4">
+                    </div>
+                    <div class="content-section" data-index="3">
+                        <h2>Natural and Minimal Bathroom Aesthetic</h2>
+                        <div class="content-preview">
+                            This image features neatly folded towels paired with a woven basket for a clean, minimal bathroom look.
+A green plant adds a natural touch, enhancing the fresh and calming aesthetic.
+                        </div>
+                        <div class="full-content">
+                            The image showcases a serene and stylish corner featuring neatly hung beige towels alongside a woven bag, complemented by the fresh greenery of a potted plant; together, these elements create a clean, natural, and calming atmosphere that blends functionality with simple, organic decor..
+                        </div>
+                        <button class="read-more-btn" data-target="3">Read More</button>
+                    </div>
+                </div>
+                <div class="blog-item">
+                    <div class="blog-img">
+                        <img src="images/blog-p-5.jpg" alt="Blog 5">
+                    </div>
+                    <div class="content-section" data-index="4">
+                        <h2>Warm and Cozy Bedroom Corner</h2>
+                        <div class="content-preview">
+                             a warm bedroom corner with cozy pillows, a laptop, and a small side table.
+.
+                        </div>
+                        <div class="full-content">
+                           The image features a comforting bedroom setting with soft white bedding accented by warm, earthy orange pillows, accompanied by a laptop and a cup placed casually on the bed, while a small wooden side table holds a candle and a simple vase; combined with a woven basket filled with dried plants, the space creates a relaxed, natural, and inviting atmosphere ideal for unwinding or casual work.
+                        </div>
+                        <button class="read-more-btn" data-target="4">Read More</button>
+                    </div>
+                </div>
+                <div class="blog-item">
+                    <div class="blog-img">
+                        <img src="images/blog-p-6.jpg" alt="Blog 6">
+                    </div>
+                    <div class="content-section" data-index="5">
+                        <h2>Minimal and Modern Home Decor</h2>
+                        <div class="content-preview">
+                             a minimal modern decor setup with a simple frame and dried decorative leaves.
+                        </div>
+                        <div class="full-content">
+                            The image showcases a clean and contemporary arrangement featuring a simple wooden-framed picture leaning against a soft-toned wall, paired with decorative dried palm leaves that add texture and an earthy, sculptural element; together, they create a calm, elegant, and minimalist aesthetic often seen in modern interior styling.
+			</div>
+                        <button class="read-more-btn" data-target="5">Read More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<center>
+
+
+<!-- Added Read More Button for Design Section -->
+           <h2 class="recent-arts-title"> Go To Recent posts</h2>
+
+<!-- Added Read More Button for Design Section -->
+<div class="design-read-more">
+    <button class="read-more-btn" onclick="window.location.href='recent.html'">
+        View More Arts
+    </button>
+</div>
+</center>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div>
+                    <img src="images/about-bg.jpg" alt="About">
+                </div>
+                <div class="about-text">
+                    <div class="title">
+                        <h2>Leonardo da Vinci</h2>
+                        <p>art & design is my passion</p>
+                    </div>
+                    <p>Leonardo da Vinci (1452–1519) was an Italian painter, inventor, and polymath widely regarded as one of the greatest artists in history. He created iconic masterpieces such as “Mona Lisa” and “The Last Supper,” known for their detail, emotion, and groundbreaking techniques. Beyond painting, Leonardo studied anatomy, engineering, architecture, and science, filling his notebooks with sketches of flying machines, human anatomy, and innovative inventions. His curiosity, creativity, and visionary ideas made him a symbol of the Renaissance and one of the most influential figures in both art and science.!</p>
+                    <p>If you want, I can give you information about more artists, modern artists, or artists in a specific style!!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+                </section>
+
+   
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+        <span>Art.Design Blog Page</span>
+    </footer>
+
+    <!-- JS FOR DESIGN READ MORE -->
+   <script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    /* ----- Handler for .design-btn ----- */
+    document.querySelectorAll('.design-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const full = btn.previousElementSibling;
+
+            if (full.style.display === 'block') {
+                full.style.display = 'none';
+                btn.textContent = 'Read More';
+                btn.classList.remove('active');
+            } else {
+                full.style.display = 'block';
+                btn.textContent = 'Read Less';
+                btn.classList.add('active');
+            }
+        });
+    });
+
+
+    /* ----- Handler for .read-more-btn with data-target ----- */
+    const readMoreBtns = document.querySelectorAll('.read-more-btn');
+
+    readMoreBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const targetIndex = this.getAttribute('data-target');
+            const contentSection = document.querySelector(`[data-index="${targetIndex}"]`);
+            const fullContent = contentSection.querySelector('.full-content');
+
+            if (fullContent.style.display === 'block') {
+                fullContent.style.display = 'none';
+                this.textContent = 'Read More';
+                this.classList.remove('read-less-btn');
+            } else {
+                fullContent.style.display = 'block';
+                this.textContent = 'Read Less';
+                this.classList.add('read-less-btn');
+            }
+        });
+    });
+
+});
+</script>
+
+
+</body>
+</html>

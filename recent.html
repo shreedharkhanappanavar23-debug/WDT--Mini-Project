@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+    <title>Responsive Blog Website | Recent Posts</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+
+    <!-- CSS -->
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f8f8f8;
+        }
+
+        header {
+            background: white;
+            padding: 20px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .container-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #444;
+            font-weight: bold;
+        }
+
+        .current-page {
+            border-bottom: 2px solid #444;
+        }
+
+        .container-flex {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .article-recent {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .article-image {
+            width: 170px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .article-title {
+            margin: 0 0 10px;
+        }
+
+        .article-body {
+            color: #555;
+        }
+
+        .article-read-more {
+            display: inline-block;
+            margin-top: 10px;
+            background: black;
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        /* Hidden content (initially) */
+        .extra-content {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #fafafa;
+            border-left: 3px solid #333;
+            border-radius: 5px;
+            color: #444;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="container container-nav">
+        <div class="site-title">
+            <h1>Living The Social Life</h1>
+            <p class="subtitle">A blog exploring minimalism in life</p>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index4.html">Home</a></li>
+                <li><a href="about.html">About me</a></li>
+                <li><a href="#" class="current-page">Recent posts</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="container container-flex">
+
+    <!-- ARTICLE 1 -->
+    <article class="article-recent">
+        <div class="article-recent-main">
+            <h2 class="article-title">Finding simplicity in life</h2>
+            <p class="article-body">
+                Life can get complicated really quickly, but it doesn't have to be!
+            </p>
+
+            <a href="#" class="article-read-more">CONTINUE READING</a>
+
+            <div class="extra-content">
+                <p>
+                    Simplicity is about creating space for what truly matters by removing unnecessary stress, clutter, and distractions from your life. When you simplify your surroundings, your routine, and your commitments, your mind becomes clearer and your days feel lighter. A tidy environment, a short and focused daily plan, and a few mindful pauses can dramatically improve your mood and productivity. Saying no to things that drain your energy and investing more time in meaningful relationships also helps you live with intention and balance. By focusing on fewer but more important things, you create a calmer, happier, and more fulfilling life.
+                </p>
+            </div>
+        </div>
+
+        <div class="article-recent-secondary">
+            <img src="img/life.jpg" class="article-image">
+            <p class="article-info">July 23, 2019 | 3 comments</p>
+        </div>
+    </article>
+
+    <!-- ARTICLE 2 -->
+    <article class="article-recent">
+        <div class="article-recent-main">
+            <h2 class="article-title">Keeping cooking simple</h2>
+            <p class="article-body">
+                Food is a very important part of everyone's life.
+            </p>
+
+            <a href="#" class="article-read-more">CONTINUE READING</a>
+
+            <div class="extra-content">
+                <p>
+                    Simple cooking does not mean boring cooking. Use fresh ingredients,
+                    reduce unnecessary steps, and enjoy the process. Cooking simple meals
+                    keeps you healthy and saves a lot of time.
+                </p>
+            </div>
+        </div>
+
+        <div class="article-recent-secondary">
+            <img src="img/food.jpg" class="article-image">
+            <p class="article-info">July 19, 2019 | 3 comments</p>
+        </div>
+    </article>
+
+    <!-- ARTICLE 3 -->
+    <article class="article-recent">
+        <div class="article-recent-main">
+            <h2 class="article-title">Simplicity and work</h2>
+            <p class="article-body">
+                Work is often a major source of stress.
+            </p>
+
+            <a href="#" class="article-read-more">CONTINUE READING</a>
+
+            <div class="extra-content">
+                <p>
+                    Keeping your work environment clean, clear, and focused helps you stay productive.
+                    Set priorities, eliminate unnecessary tasks, and create a balanced workflow that
+                    supports your mental health.
+                </p>
+            </div>
+        </div>
+
+        <div class="article-recent-secondary">
+            <img src="img/work.jpg" class="article-image">
+            <p class="article-info">July 12, 2019 | 3 comments</p>
+        </div>
+    </article>
+
+</div>
+
+<footer>
+    <p><strong>Living the simple life</strong></p>
+    <p>Copyright © 2022</p>
+    <p>Made with <i class="fas fa-heart"></i> By Kru'Z™</p>
+</footer>
+
+
+<!-- JAVASCRIPT -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const buttons = document.querySelectorAll(".article-read-more");
+
+    buttons.forEach(button => {
+        button.addEventListener("click", function(e) {
+            e.preventDefault();
+
+            const article = this.closest(".article-recent");
+            const extra = article.querySelector(".extra-content");
+
+            if (extra.style.display === "block") {
+                extra.style.display = "none";
+                this.textContent = "CONTINUE READING";
+            } else {
+                extra.style.display = "block";
+                this.textContent = "READ LESS";
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>
